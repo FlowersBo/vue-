@@ -22,3 +22,8 @@ export const reqPwdLogin=({name,pwd,captcha})=>ajax(BASE+'/login_pwd',{name,pwd,
 export const reqUserInfo=()=>ajax(BASE+'/userinfo')
 // 8.退出登录
 export const reqLogout=()=>ajax(BASE+'/logout')
+
+/*mock*/
+export const reqShopGoods=()=>ajax('/goods')
+export const reqShopRatings=()=>ajax('/ratings')
+export const reqShopInfo=()=>ajax('/info')
