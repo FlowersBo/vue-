@@ -1,7 +1,13 @@
 /**
  * Created by Flowers博爵 on 2018/11/19.
  */
-import {RECEIVE_ADDRESS,RECEIVE_CATEGORYS,RECEIVE_SHOPS} from './mutations-types'
+import {
+  RECEIVE_ADDRESS,
+  RECEIVE_CATEGORYS,
+  RECEIVE_SHOPS,
+  RECEIVE_USER,
+  RESET_USER
+} from './mutations-types'
 export default{
   [RECEIVE_ADDRESS](state,{address}){
   state.address=address
@@ -11,5 +17,11 @@ export default{
   },
   [RECEIVE_SHOPS](state,{shops}){
     state.shops=shops
+  },
+  [RECEIVE_USER](state,{user}){
+    state.user=user
+  },
+  [RESET_USER](state){
+    state.user={}
   },
 }
