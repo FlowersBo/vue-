@@ -34,7 +34,7 @@
                     <span class="now">￥{{food.price}}</span>
                   </div>
                   <div class="cartcontrol-wrapper">
-                    CartControl组件
+                    <CortControl :food="food"/>
                   </div>
                 </div>
               </li>
@@ -42,6 +42,7 @@
           </li>
         </ul>
       </div>
+      <ShopCart/>
     </div>
   </div>
 </template>
@@ -49,6 +50,8 @@
 <script>
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
+  import CortControl from '../../../components/CortControl/CortControl.vue'
+  import ShopCart from '../../../components/ShopCart/ShopCart.vue'
   export default {
     data(){
       return{
@@ -95,14 +98,11 @@
           })
         //绑定scroll监听事件
         this.rightScroll.on('scroll',({x,y})=>{
-            console.log(x,y);
             this.scrollY=Math.abs(y)
           })
         //绑定scrollEnd监听事件
         this.rightScroll.on('scrollEnd',({x,y})=>{
-          console.log(x,y);
           this.scrollY=Math.abs(y)
-          console.log('scrollY',this.scrollY);
         })
         },
       //初始化tops
@@ -127,6 +127,10 @@
         //左侧分类变化
         this.rightScroll.scrollTo(0,y,500)
       },
+    },
+    components:{
+      CortControl,
+      ShopCart
     }
   }
 </script>

@@ -11,3 +11,6 @@ export const RECEIVE_GOODS = 'receive_goods' // 接收商品数组
 export const RECEIVE_RATINGS = 'receive_ratings' // 接收商家评价数组
 export const RECEIVE_INFO = 'receive_info' // 接收商家信息
 
+export const ADD_FOOT_COUNT = 'add_foot_count'
+export const REDUCE_FOOT_COUNT = 'reduce_foot_count'
+

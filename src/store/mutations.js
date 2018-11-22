@@ -1,6 +1,7 @@
 /**
  * Created by Flowers博爵 on 2018/11/19.
  */
+import Vue from 'vue'
 import {
   RECEIVE_ADDRESS,
   RECEIVE_CATEGORYS,
@@ -9,7 +10,9 @@ import {
   RESET_USER,
   RECEIVE_GOODS,
   RECEIVE_RATINGS,
-  RECEIVE_INFO
+  RECEIVE_INFO,
+  REDUCE_FOOT_COUNT,
+  ADD_FOOT_COUNT
 } from './mutations-types'
 export default{
   [RECEIVE_ADDRESS](state,{address}){
@@ -39,5 +42,23 @@ export default{
   [RECEIVE_GOODS](state, {goods}) {
     state.goods = goods
   },
+  //food食物更新 购物车
+  [ADD_FOOT_COUNT](state,{food}) {
+    if(food.count){
+      food.count++
+    }else{
+      // food.count=1 新添加的属性没有数据绑定==>不会更新界面
+      Vue.set(food, 'count', 1)
+      state.cartFoods.push(food)
+    }
+  },
   
+  [REDUCE_FOOT_COUNT](state,{food}) {
+    if(food.count) {
+      food.count--
+      if(food.count===0){
+        state.cartFoods.splice(state.cartFoods.indexOf(food),1)
+      }
+    }
+  },
 }

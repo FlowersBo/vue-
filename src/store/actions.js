@@ -22,7 +22,9 @@ import {
   RESET_USER,
   RECEIVE_GOODS,
   RECEIVE_RATINGS,
-  RECEIVE_INFO
+  RECEIVE_INFO,
+  ADD_FOOT_COUNT,
+  REDUCE_FOOT_COUNT
 } from './mutations-types'
 
 export default {
@@ -107,5 +109,12 @@ export default {
       typeof cb==='function' && cb()
     }
   },
-  
+  //跟新food数量的同步action
+  updateFoodCount({commit},{food,isAdd}) {
+    if(isAdd){
+      commit(ADD_FOOT_COUNT, {food})
+    }else{
+      commit(REDUCE_FOOT_COUNT, {food})
+    }
+  },
 }
