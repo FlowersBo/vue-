@@ -13,4 +13,5 @@ export const RECEIVE_INFO = 'receive_info' // 接收商家信息
 
 export const ADD_FOOT_COUNT = 'add_foot_count'
 export const REDUCE_FOOT_COUNT = 'reduce_foot_count'
+export const CLEAR_CART='clear_cart'// 清空购物车数据
 

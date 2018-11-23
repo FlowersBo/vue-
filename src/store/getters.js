@@ -10,4 +10,12 @@ export default{
   totalPrice(state){
     return state.cartFoods.reduce((pre,food)=> pre+food.count*food.price,0)
   },
+  //评论总数
+  ratingsCount(state){
+    return state.ratings.length
+  },
+  //评论满意总数
+  positiveRatingsCount(state){
+    return state.ratings.reduce((pre,rating)=>pre+(rating.rateType===0? 1: 0),0)
+  }
 }

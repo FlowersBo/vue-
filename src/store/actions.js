@@ -24,7 +24,8 @@ import {
   RECEIVE_RATINGS,
   RECEIVE_INFO,
   ADD_FOOT_COUNT,
-  REDUCE_FOOT_COUNT
+  REDUCE_FOOT_COUNT,
+  CLEAR_CART
 } from './mutations-types'
 
 export default {
@@ -91,11 +92,12 @@ export default {
   },
 
 // 异步获取商家评价列表
-  async getShopRatings({commit}) {
+  async getShopRatings({commit},cb) {
     const result = await reqShopRatings()
     if(result.code===0) {
       const ratings = result.data
       commit(RECEIVE_RATINGS, {ratings})
+      typeof cb==='function'&& cb()
     }
   },
 
@@ -116,5 +118,9 @@ export default {
     }else{
       commit(REDUCE_FOOT_COUNT, {food})
     }
+  },
+  //同步清空购物车数据的同步action
+  clearCart({commit}){
+    commit(CLEAR_CART)
   },
 }

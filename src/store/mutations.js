@@ -12,7 +12,8 @@ import {
   RECEIVE_RATINGS,
   RECEIVE_INFO,
   REDUCE_FOOT_COUNT,
-  ADD_FOOT_COUNT
+  ADD_FOOT_COUNT,
+  CLEAR_CART
 } from './mutations-types'
 export default{
   [RECEIVE_ADDRESS](state,{address}){
@@ -60,5 +61,10 @@ export default{
         state.cartFoods.splice(state.cartFoods.indexOf(food),1)
       }
     }
+  },
+  [CLEAR_CART](state) {
+    //清空food中的count
+    state.cartFoods.forEach(food=>food.count=0)
+    state.cartFoods = []
   },
 }
